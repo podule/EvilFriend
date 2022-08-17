@@ -8,10 +8,10 @@ import com.galia.evilfriend.data.model.Prompt
 
 @Dao
 interface PromptDao {
-    @Query("SELECT * FROM prompt")
+    @Query("SELECT * FROM prompts")
     fun getAllPrompts(): List<Prompt>
 
-    @Query("SELECT * FROM prompt where id=(:id)")
+    @Query("SELECT * FROM prompts where id=(:id)")
     fun getPrompt(id: Int): Prompt?
 
     @Insert
