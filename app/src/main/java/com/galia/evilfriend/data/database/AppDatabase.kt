@@ -8,11 +8,12 @@ import androidx.room.TypeConverters
 import com.galia.evilfriend.data.converter.PromptTypeConverter
 import com.galia.evilfriend.data.dao.LevelDao
 import com.galia.evilfriend.data.dao.PromptDao
+import com.galia.evilfriend.data.model.Level
 import com.galia.evilfriend.data.model.Prompt
 
 const val DATABASE_NAME = "evil-friend-database"
 
-@Database(entities = [Prompt::class], version = 1)
+@Database(entities = [Prompt::class, Level::class], version = 1, exportSchema = false)
 @TypeConverters(PromptTypeConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun promptDao(): PromptDao

@@ -3,6 +3,7 @@ package com.galia.evilfriend.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
@@ -10,7 +11,8 @@ import java.util.*
     tableName = "prompts",
     foreignKeys = [
         ForeignKey(entity = Level::class, parentColumns = ["id"], childColumns = ["fid_level"])
-    ]
+    ],
+    indices = [Index("fid_level")]
 )
 data class Prompt(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
