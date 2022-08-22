@@ -2,10 +2,10 @@ package com.galia.evilfriend.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.galia.evilfriend.data.repository.PromptDatabaseRepository
-import com.galia.evilfriend.di.ActivityScope
+import com.galia.evilfriend.di.PromptFragmentScope
 import javax.inject.Inject
 
-@ActivityScope
+@PromptFragmentScope
 class PromptViewModel @Inject constructor(
     private val repository: PromptDatabaseRepository
 ): ViewModel() {

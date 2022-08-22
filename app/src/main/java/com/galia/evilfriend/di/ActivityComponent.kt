@@ -7,5 +7,5 @@ import dagger.Subcomponent
 @ActivityScope
 interface ActivityComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun promptFragmentComponent(): PromptFragmentComponent
 }
