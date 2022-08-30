@@ -1,12 +1,8 @@
 package com.galia.evilfriend.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
-import androidx.room.Update
-import com.galia.evilfriend.data.model.LevelAndPrompt
+import androidx.room.*
+import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.data.model.Prompt
 
 @Dao
@@ -19,7 +15,7 @@ interface PromptDao {
 
     @Transaction
     @Query("SELECT * FROM prompts where is_active = 1")
-    fun getAllLevelAndPrompt(): LiveData<List<LevelAndPrompt>>
+    fun getAllPromptAndNotification(): LiveData<List<PromptAndNotification>>
 
     @Insert
     fun insert(prompt: Prompt)

@@ -1,18 +1,17 @@
 package com.galia.evilfriend.data.converter
 
 import androidx.room.TypeConverter
-import java.util.*
+import com.galia.evilfriend.data.model.Level
 
 class PromptTypeConverter {
+
     @TypeConverter
-    fun fromDate(date: Date?): Long? {
-        return date?.time
+    fun fromLevel(level: Level): String {
+        return Level.getStringLevel(level)
     }
 
     @TypeConverter
-    fun toDate(mls: Long?): Date? {
-        return mls?.let {
-            Date(it)
-        }
+    fun toLevel(code: String): Level {
+        return Level.getLevel(code)
     }
 }

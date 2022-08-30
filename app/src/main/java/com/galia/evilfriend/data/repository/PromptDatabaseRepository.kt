@@ -9,7 +9,7 @@ class PromptDatabaseRepository @Inject constructor(
 ){
     fun getAllPrompts() = promptDao.getAllPrompts()
 
-    fun getAllLevelAndPrompt() = promptDao.getAllLevelAndPrompt()
+    fun getAllPromptAndNotification() = promptDao.getAllPromptAndNotification()
 
     fun getPrompt(id: Int) = promptDao.getPrompt(id)
 

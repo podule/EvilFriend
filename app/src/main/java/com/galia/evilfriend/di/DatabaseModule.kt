@@ -1,7 +1,6 @@
 package com.galia.evilfriend.di
 
 import android.content.Context
-import com.galia.evilfriend.data.dao.LevelDao
 import com.galia.evilfriend.data.dao.PromptDao
 import com.galia.evilfriend.data.database.AppDatabase
 import dagger.Module
@@ -21,9 +20,5 @@ class DatabaseModule {
         return appDatabase.promptDao()
     }
 
-    @Provides
-    fun getLevelDao(appDatabase: AppDatabase): LevelDao {
-        return appDatabase.levelDao()
-    }
 
 }

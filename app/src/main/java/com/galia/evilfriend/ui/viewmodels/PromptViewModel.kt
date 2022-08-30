@@ -12,5 +12,5 @@ class PromptViewModel @Inject constructor(
 
     val promptListLiveData = repository.getAllPrompts()
 
-    val promptWithLevelListLiveData = repository.getAllLevelAndPrompt()
+    val promptWithLevelListLiveData = repository.getAllPromptAndNotification()
 }

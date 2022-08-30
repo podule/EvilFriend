@@ -1,14 +1,26 @@
 package com.galia.evilfriend.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+enum class Level {
+    NORMAL, HIGH;
 
-@Entity(tableName = "levels")
-data class Level(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val name: String,
-    val code: String,
-    @ColumnInfo(name = "is_active") var isActive: Boolean = true
+    companion object {
+        private const val normal = "normal"
+        private const val high = "high"
 
-)
+        fun getLevel(code: String): Level {
+            return when (code) {
+                normal -> NORMAL
+                high -> HIGH
+                else -> throw Exception("Not supported level")
+            }
+        }
+
+        fun getStringLevel(level: Level): String {
+            return when (level) {
+                NORMAL -> normal
+                HIGH -> high
+            }
+        }
+    }
+
+}

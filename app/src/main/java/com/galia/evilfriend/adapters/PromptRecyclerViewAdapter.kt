@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.galia.evilfriend.R
-import com.galia.evilfriend.data.model.LevelAndPrompt
+import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.databinding.FragmentPromptItemBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PromptRecyclerViewAdapter(
-    private val prompts: List<LevelAndPrompt>,
+    private val prompts: List<PromptAndNotification>,
     private val itemClickHandler: (i: Int) -> Unit
 ) : RecyclerView.Adapter<PromptRecyclerViewAdapter.ItemViewHolder>(){
 

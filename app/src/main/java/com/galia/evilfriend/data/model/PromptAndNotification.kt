@@ -3,9 +3,9 @@ package com.galia.evilfriend.data.model
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class LevelAndPrompt(
+data class PromptAndNotification(
     @Embedded
     val prompt: Prompt,
-    @Relation(parentColumn = "fid_level", entityColumn = "id")
-    val level: Level
+    @Relation(parentColumn = "id", entityColumn = "fid_prompt")
+    val notification: Notification
 )
