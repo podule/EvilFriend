@@ -21,6 +21,7 @@ class PromptRecyclerViewAdapter(
         val item: ViewGroup = binding.promptItem
         val titleTextView: TextView = binding.titleTextView
         val dateTextView: TextView = binding.textView
+        val notificationTimeTextView: TextView = binding.notificationTimeTextView
         val resource: Resources = binding.textView.resources
     }
 
@@ -38,6 +39,7 @@ class PromptRecyclerViewAdapter(
 
         holder.titleTextView.text = item.prompt.title
         holder.dateTextView.text = holder.resource.getString(R.string.prompt_date, localizedDate)
+        holder.notificationTimeTextView.text = item.notification.getTime()
         holder.item.setOnClickListener {
             itemClickHandler(item.prompt.id)
         }

@@ -15,4 +15,8 @@ data class Notification(
     @ColumnInfo(name = "wake_hour") var wakeHour: Int,
     @ColumnInfo(name = "wake_minutes", defaultValue = "0") var wakeMinutes: Int = 0,
     @ColumnInfo(name = "is_active") var isActive: Boolean = true
-)
+) {
+    fun getTime(): String {
+        return "${if (wakeHour < 10) "0$wakeHour" else wakeHour}:${if (wakeMinutes < 10) "0$wakeMinutes" else wakeMinutes}"
+    }
+}
