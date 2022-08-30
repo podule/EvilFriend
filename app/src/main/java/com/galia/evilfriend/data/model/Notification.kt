@@ -12,6 +12,7 @@ import java.util.*
 data class Notification(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "fid_prompt") val fidPrompt: Int,
-    @ColumnInfo(name = "wake_at") var wakeAt: Date = Date(),
+    @ColumnInfo(name = "wake_hour") var wakeHour: Int,
+    @ColumnInfo(name = "wake_minutes", defaultValue = "0") var wakeMinutes: Int = 0,
     @ColumnInfo(name = "is_active") var isActive: Boolean = true
 )
