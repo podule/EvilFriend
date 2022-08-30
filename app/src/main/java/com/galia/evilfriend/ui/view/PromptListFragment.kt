@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.galia.evilfriend.adapters.PromptRecyclerViewAdapter
 import com.galia.evilfriend.databinding.FragmentPromptListBinding
 import com.galia.evilfriend.di.PromptFragmentComponent
@@ -31,7 +32,10 @@ class PromptListFragment : Fragment() {
         fragmentComponent.inject(this)
 
         viewModel.promptWithLevelListLiveData.observe(viewLifecycleOwner){
-            result ->  view.promptList.adapter = PromptRecyclerViewAdapter(result)
+            result ->  view.promptList.adapter = PromptRecyclerViewAdapter(result){ i ->
+                val action = PromptListFragmentDirections.actionPromptListFragmentToPromptFragment(i.toString())
+                this.findNavController().navigate(action)
+            }
         }
 
         return view.root

@@ -9,5 +9,23 @@
         android:id="@+id/promptListFragment"
         android:name="com.galia.evilfriend.ui.view.PromptListFragment"
         android:label="fragment_prompt_list"
-        tools:layout="@layout/fragment_prompt_list" />
+        tools:layout="@layout/fragment_prompt_list" >
+        <action
+            android:id="@+id/action_promptListFragment_to_promptFragment"
+            app:destination="@id/promptFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/promptFragment"
+        android:name="com.galia.evilfriend.ui.view.PromptFragment"
+        android:label="fragment_prompt"
+        tools:layout="@layout/fragment_prompt" >
+        <argument
+            android:name="promptId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>
