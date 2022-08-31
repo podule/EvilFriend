@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_middle">8dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_radius">5dp</dimen>
+
+    <dimen name="card_top_view_height">5dp</dimen>
+    <dimen name="list_prompt_title_text_size">20sp</dimen>
+    <dimen name="list_prompt_time_text_size">34sp</dimen>
+</resources>

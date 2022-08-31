@@ -2,6 +2,7 @@ package com.galia.evilfriend.adapters
 
 import android.content.res.Resources
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class PromptRecyclerViewAdapter(
         val item: ViewGroup = binding.promptItem
         val titleTextView: TextView = binding.titleTextView
         val dateTextView: TextView = binding.textView
+        val levelView: View = binding.levelMarkView
         val notificationTimeTextView: TextView = binding.notificationTimeTextView
         val resource: Resources = binding.textView.resources
     }
@@ -40,6 +42,7 @@ class PromptRecyclerViewAdapter(
         holder.titleTextView.text = item.prompt.title
         holder.dateTextView.text = holder.resource.getString(R.string.prompt_date, localizedDate)
         holder.notificationTimeTextView.text = item.notification.getTime()
+        holder.levelView.setBackgroundColor(holder.resource.getColor(R.color.secondaryDarkColor))
         holder.item.setOnClickListener {
             itemClickHandler(item.prompt.id)
         }

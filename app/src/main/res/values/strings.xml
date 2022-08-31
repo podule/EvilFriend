@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">EvilFriend</string>
     <string name="prompt_date">Создан: %1$s</string>
+    <string name="prompt_date_tools">Создан: 20.01.70 09:37</string>
+    <string name="prompt_title_tools">Продай квартиру</string>
+    <string name="prompt_time_tools">14:00</string>
 </resources>
