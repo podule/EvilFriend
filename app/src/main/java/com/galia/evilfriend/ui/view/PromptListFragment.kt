@@ -32,7 +32,7 @@ class PromptListFragment : Fragment() {
         fragmentComponent.inject(this)
 
         viewModel.promptWithLevelListLiveData.observe(viewLifecycleOwner){
-            result ->  view.promptList.adapter = PromptRecyclerViewAdapter(result){ i ->
+            result ->  view.promptList.adapter = PromptRecyclerViewAdapter(result, viewModel){ i ->
                 val action = PromptListFragmentDirections.actionPromptListFragmentToPromptFragment(i.toString())
                 this.findNavController().navigate(action)
             }

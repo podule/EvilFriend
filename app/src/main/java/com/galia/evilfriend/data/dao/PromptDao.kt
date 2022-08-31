@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.data.model.Prompt
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PromptDao {
@@ -15,7 +16,7 @@ interface PromptDao {
 
     @Transaction
     @Query("SELECT * FROM prompts where is_active = 1")
-    fun getAllPromptAndNotification(): LiveData<List<PromptAndNotification>>
+    fun getAllPromptAndNotification(): Flow<List<PromptAndNotification>>
 
     @Insert
     fun insert(prompt: Prompt)

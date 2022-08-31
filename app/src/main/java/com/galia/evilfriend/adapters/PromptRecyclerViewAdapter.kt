@@ -5,19 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.galia.evilfriend.R
+import com.galia.evilfriend.data.model.Level
 import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.databinding.FragmentPromptItemBinding
+import com.galia.evilfriend.ui.viewmodels.PromptViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PromptRecyclerViewAdapter(
     private val prompts: List<PromptAndNotification>,
+    private val viewModel: PromptViewModel,
     private val itemClickHandler: (i: Int) -> Unit
-) : RecyclerView.Adapter<PromptRecyclerViewAdapter.ItemViewHolder>(){
+) : RecyclerView.Adapter<PromptRecyclerViewAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(private val binding: FragmentPromptItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ItemViewHolder(private val binding: FragmentPromptItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         val item: ViewGroup = binding.promptItem
         val titleTextView: TextView = binding.titleTextView
@@ -28,7 +33,8 @@ class PromptRecyclerViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val binding = FragmentPromptItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            FragmentPromptItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ItemViewHolder(binding)
     }
@@ -41,8 +47,15 @@ class PromptRecyclerViewAdapter(
 
         holder.titleTextView.text = item.prompt.title
         holder.dateTextView.text = holder.resource.getString(R.string.prompt_date, localizedDate)
-        holder.notificationTimeTextView.text = item.notification.getTime()
-        holder.levelView.setBackgroundColor(holder.resource.getColor(R.color.secondaryDarkColor))
+        holder.notificationTimeTextView.text =
+            viewModel.formatNotificationUseCase(item.notification)
+        holder.levelView.setBackgroundColor(
+            ContextCompat.getColor(
+                holder.levelView.context, viewModel.promptLevelUseCase(
+                    Level.getLevel(item.prompt.level)
+                )
+            )
+        )
         holder.item.setOnClickListener {
             itemClickHandler(item.prompt.id)
         }

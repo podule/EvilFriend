@@ -6,10 +6,10 @@ import javax.inject.Inject
 
 class PromptDatabaseRepository @Inject constructor(
     private val promptDao: PromptDao
-){
+): PromptRepository {
     fun getAllPrompts() = promptDao.getAllPrompts()
 
-    fun getAllPromptAndNotification() = promptDao.getAllPromptAndNotification()
+    override fun getAllPromptAndNotification() = promptDao.getAllPromptAndNotification()
 
     fun getPrompt(id: Int) = promptDao.getPrompt(id)
 
