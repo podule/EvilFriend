@@ -1,9 +1,8 @@
 package com.galia.evilfriend.di
 
-import com.galia.evilfriend.ui.view.MainActivity
 import dagger.Subcomponent
 
-@Subcomponent
+@Subcomponent(modules = [ActivityModule::class])
 @ActivityScope
 interface ActivityComponent {
 

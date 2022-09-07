@@ -6,6 +6,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.galia.evilfriend.data.converter.DateTypeConverter
 import com.galia.evilfriend.data.converter.PromptTypeConverter
+import com.galia.evilfriend.data.dao.NotificationDao
 import com.galia.evilfriend.data.dao.PromptDao
 import com.galia.evilfriend.data.model.Notification
 import com.galia.evilfriend.data.model.Prompt
@@ -22,6 +23,7 @@ const val DATABASE_NAME = "evil-friend-database"
 @TypeConverters(DateTypeConverter::class, PromptTypeConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun promptDao(): PromptDao
+    abstract fun notificationDao(): NotificationDao
 
     companion object {
         private var instance: AppDatabase? = null

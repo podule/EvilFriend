@@ -9,7 +9,7 @@ import java.util.*
 data class Prompt(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     var title: String,
-    val level: String,
+    var level: String,
     @ColumnInfo(name = "is_active") var isActive: Boolean = true,
     @ColumnInfo(name = "created_at") var createdAt: Date = Date()
 )

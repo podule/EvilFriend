@@ -6,9 +6,8 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface PromptFragmentModule {
+interface ActivityModule {
 
-    @PromptFragmentScope
     @Binds
     fun repository(repository: PromptDatabaseRepository): PromptRepository
 }

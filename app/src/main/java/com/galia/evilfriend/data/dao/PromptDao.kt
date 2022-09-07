@@ -2,6 +2,7 @@ package com.galia.evilfriend.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.galia.evilfriend.data.model.Notification
 import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.data.model.Prompt
 import kotlinx.coroutines.flow.Flow
@@ -18,9 +19,26 @@ interface PromptDao {
     @Query("SELECT * FROM prompts where is_active = 1")
     fun getAllPromptAndNotification(): Flow<List<PromptAndNotification>>
 
+    @Transaction
+    @Query("SELECT * FROM prompts where id=(:id)")
+    fun getPromptAndNotification(id: Int): Flow<PromptAndNotification>
+
+    @Transaction
+    suspend fun addPromptAndNotification(prompt: Prompt, notification: Notification, daoNotificationDao: NotificationDao) {
+        val pk = insert(prompt)
+        notification.fidPrompt = pk.toInt()
+        daoNotificationDao.insert(notification)
+    }
+
+    @Transaction
+    suspend fun updatePromptAndNotification(prompt: Prompt, notification: Notification, daoNotificationDao: NotificationDao) {
+        update(prompt)
+        daoNotificationDao.update(notification)
+    }
+
     @Insert
-    fun insert(prompt: Prompt)
+    suspend fun insert(prompt: Prompt): Long
 
     @Update
-    fun update(prompt: Prompt)
+    suspend fun update(prompt: Prompt)
 }

@@ -1,7 +1,6 @@
 package com.galia.evilfriend.data.model
 
 import androidx.room.*
-import java.util.*
 
 @Entity(
     tableName = "notifications",
@@ -11,8 +10,8 @@ import java.util.*
 )
 data class Notification(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo(name = "fid_prompt") val fidPrompt: Int,
-    @ColumnInfo(name = "wake_hour") var wakeHour: Int,
+    @ColumnInfo(name = "fid_prompt") var fidPrompt: Int,
+    @ColumnInfo(name = "wake_hour") var wakeHour: Int = 0,
     @ColumnInfo(name = "wake_minutes", defaultValue = "0") var wakeMinutes: Int = 0,
     @ColumnInfo(name = "is_active") var isActive: Boolean = true
 )

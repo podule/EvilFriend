@@ -4,4 +4,10 @@
     <string name="prompt_date_tools">Создан: 20.01.70 09:37</string>
     <string name="prompt_title_tools">Продай квартиру</string>
     <string name="prompt_time_tools">14:00</string>
+    <string name="fab_add_prompt">Добавление подсказки</string>
+    <string name="prompt_title_edit_text_hint">О чем напомнить?</string>
+    <string name="prompt_title_edit_text_helper">коротко и ясно</string>
+    <string name="prompt_level_hint">Уровень важности</string>
+    <string name="prompt_time">--:--</string>
+    <string name="prompt_active">on|off</string>
 </resources>

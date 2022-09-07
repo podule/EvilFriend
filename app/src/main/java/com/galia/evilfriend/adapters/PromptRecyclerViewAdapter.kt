@@ -11,13 +11,13 @@ import com.galia.evilfriend.R
 import com.galia.evilfriend.data.model.Level
 import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.databinding.FragmentPromptItemBinding
-import com.galia.evilfriend.ui.viewmodels.PromptViewModel
+import com.galia.evilfriend.ui.viewmodels.PromptListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PromptRecyclerViewAdapter(
     private val prompts: List<PromptAndNotification>,
-    private val viewModel: PromptViewModel,
+    private val viewModel: PromptListViewModel,
     private val itemClickHandler: (i: Int) -> Unit
 ) : RecyclerView.Adapter<PromptRecyclerViewAdapter.ItemViewHolder>() {
 
