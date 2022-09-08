@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -11,120 +12,133 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_large">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_large">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/promptTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_middle"
-                android:layout_marginTop="@dimen/margin_big"
-                android:layout_marginEnd="@dimen/margin_middle"
-                android:ems="10"
-                android:hint="@string/prompt_title_edit_text_hint"
-                app:helperText="@string/prompt_title_edit_text_helper"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:validateTextLiveDataNotEmpty="@{viewModel.title}"
-                    android:text="@={viewModel.title}" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/promptLevels"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_middle"
-                android:layout_marginTop="@dimen/margin_big"
-                android:layout_marginEnd="@dimen/margin_middle"
-                android:minHeight="48dp"
-                android:hint="@string/prompt_level_hint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/promptTitle">
+                android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/promptTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_middle"
+                    android:layout_marginTop="@dimen/margin_big"
+                    android:layout_marginEnd="@dimen/margin_middle"
+                    android:ems="10"
+                    android:hint="@string/prompt_title_edit_text_hint"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="100"
+                    app:errorEnabled="true"
+                    app:helperText="@string/prompt_title_edit_text_helper"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.title}"
+                        app:validateTextLiveDataNotEmpty="@{viewModel.title}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/promptLevels"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:inputType="none|textNoSuggestions"
-                    android:cursorVisible="false"
-                    app:validateTextLiveDataNotEmpty="@{viewModel.level}"
-                    android:onTextChanged="@{(text, start, before, count) -> viewModel.setLevelLiveData(text)}"
+                    android:layout_marginStart="@dimen/margin_middle"
+                    android:layout_marginTop="@dimen/margin_big"
+                    android:layout_marginEnd="@dimen/margin_middle"
+                    android:hint="@string/prompt_level_hint"
+                    android:minHeight="48dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/promptTitle">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none|textNoSuggestions"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.setLevelLiveData(text)}"
+                        app:entries="@{viewModel.levels}"
+                        app:level="@{viewModel.level}"
+                        app:validateTextLiveDataNotEmpty="@{viewModel.level}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/promptTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_middle"
+                    android:layout_marginTop="@dimen/margin_big"
+                    android:layout_marginEnd="@dimen/margin_middle"
+                    android:textSize="@dimen/list_prompt_time_text_size"
+                    app:formatterTime="@{viewModel.formatNotificationUseCase}"
+                    app:hour="@{viewModel.hour}"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/promptLevels"
+                    app:minute="@{viewModel.minute}" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/promptActive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_middle"
+                    android:layout_marginTop="@dimen/margin_big"
+                    android:layout_marginEnd="@dimen/margin_middle"
+                    android:onCheckedChanged="@{(view, isChecked) -> viewModel.setActiveLiveData(isChecked)}"
+                    android:text="@string/prompt_active"
+                    app:isActive="@{viewModel.isActive}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@+id/promptLevels" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.70" />
+
+                <Button
+                    android:id="@+id/promptSave"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_middle"
+                    android:layout_marginTop="@dimen/margin_big"
+                    android:layout_marginEnd="@dimen/margin_middle"
+                    android:layout_marginBottom="@dimen/margin_big"
+                    android:onClick="@{() -> viewModel.savePrompt()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/promptTime"
                     app:level="@{viewModel.level}"
-                    app:entries="@{viewModel.levels}" />
+                    app:saveButton="@{viewModel.promptAndNotification.prompt}"
+                    app:title="@{viewModel.title}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/promptTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_middle"
-                android:layout_marginTop="@dimen/margin_big"
-                android:layout_marginEnd="@dimen/margin_middle"
-                android:textSize="@dimen/list_prompt_time_text_size"
-                app:formatterTime="@{viewModel.formatNotificationUseCase}"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/promptLevels"
-                app:hour="@{viewModel.hour}"
-                app:minute="@{viewModel.minute}" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/promptActive"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_middle"
-                android:layout_marginEnd="@dimen/margin_middle"
-                android:text="@string/prompt_active"
-                app:isActive="@{viewModel.isActive}"
-                android:onCheckedChanged="@{(view, isChecked) -> viewModel.setActiveLiveData(isChecked)}"
-                app:layout_constraintBaseline_toBaselineOf="@+id/promptTime"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="250dp" />
-
-            <Button
-                android:id="@+id/promptSave"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_middle"
-                android:layout_marginTop="@dimen/margin_big"
-                android:layout_marginEnd="@dimen/margin_middle"
-                app:saveButton="@{viewModel.promptAndNotification.prompt}"
-                android:onClick="@{() -> viewModel.savePrompt()}"
-                app:title="@{viewModel.title}"
-                app:level="@{viewModel.level}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/promptTime" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </layout>
 

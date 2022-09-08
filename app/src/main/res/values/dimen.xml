@@ -4,12 +4,12 @@
     <dimen name="margin_big">24dp</dimen>
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_middle">8dp</dimen>
-    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_middle">8dp</dimen>
 
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="card_radius">5dp</dimen>
 
-    <dimen name="card_top_view_height">5dp</dimen>
+    <dimen name="card_top_view_height">8dp</dimen>
     <dimen name="list_prompt_title_text_size">20sp</dimen>
     <dimen name="list_prompt_time_text_size">34sp</dimen>
 </resources>

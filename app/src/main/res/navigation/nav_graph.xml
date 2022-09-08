@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/promptListFragment"
         android:name="com.galia.evilfriend.ui.view.PromptListFragment"
-        android:label="fragment_prompt_list"
+        android:label="@string/prompt_list_label"
         tools:layout="@layout/fragment_prompt_list" >
         <action
             android:id="@+id/action_promptListFragment_to_promptFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/promptFragment"
         android:name="com.galia.evilfriend.ui.view.PromptFragment"
-        android:label="fragment_prompt"
+        android:label="@string/prompt_label"
         tools:layout="@layout/fragment_prompt" >
         <argument
             android:name="promptId"

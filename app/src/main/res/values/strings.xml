@@ -10,4 +10,6 @@
     <string name="prompt_level_hint">Уровень важности</string>
     <string name="prompt_time">--:--</string>
     <string name="prompt_active">on|off</string>
+    <string name="prompt_list_label">Список напоминаний</string>
+    <string name="prompt_label">Напоминание</string>
 </resources>

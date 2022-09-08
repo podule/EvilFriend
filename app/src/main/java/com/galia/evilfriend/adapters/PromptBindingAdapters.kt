@@ -24,10 +24,12 @@ fun validateTextNotEmpty(view: EditText, validateTextLiveDataNotEmpty: String?) 
 fun setEntries(view: AppCompatAutoCompleteTextView, entries: List<Any>, level: String?) {
     val adapter = ArrayAdapter(view.context, R.layout.level_list_item, entries)
     view.setAdapter(adapter)
+    view.setText(entries[0].toString())
 
     level?.let {
         view.setText(level, false)
     }
+
 }
 
 @BindingAdapter(value = ["app:formatterTime", "app:hour", "app:minute"], requireAll = true)
