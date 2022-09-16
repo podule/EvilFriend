@@ -18,7 +18,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_large">
 
 
@@ -63,7 +63,6 @@
                     android:layout_marginEnd="@dimen/margin_middle"
                     android:hint="@string/prompt_level_hint"
                     android:minHeight="48dp"
-                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
