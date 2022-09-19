@@ -12,6 +12,8 @@ import com.galia.evilfriend.adapters.PromptRecyclerViewAdapter
 import com.galia.evilfriend.databinding.FragmentPromptListBinding
 import com.galia.evilfriend.di.PromptFragmentComponent
 import com.galia.evilfriend.ui.viewmodels.PromptListViewModel
+import com.galia.evilfriend.util.PromptFilterType
+import com.google.android.material.tabs.TabLayout
 import javax.inject.Inject
 
 class PromptListFragment : Fragment() {
@@ -43,6 +45,23 @@ class PromptListFragment : Fragment() {
                 this.findNavController().navigate(action)
             }
         }
+
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    when (it.position) {
+                        0 -> viewModel.setFilter(PromptFilterType.ACTIVE_PROMPT)
+                        1 -> viewModel.setFilter(PromptFilterType.ARCHIVE_PROMPT)
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
 
         binding.fab.setOnClickListener {
             val action = PromptListFragmentDirections.actionPromptListFragmentToPromptFragment()

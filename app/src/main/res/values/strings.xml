@@ -16,4 +16,6 @@
     <string name="notification_channel">Prompt</string>
     <string name="notification_channel_description">Напоминания о нужном</string>
     <string name="notification_title">Напоминаю, что тебе нужно</string>
+    <string name="active_tab_name">Активные</string>
+    <string name="not_active_tab_name">Архив</string>
 </resources>

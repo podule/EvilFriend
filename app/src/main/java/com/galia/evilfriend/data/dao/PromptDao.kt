@@ -9,14 +9,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PromptDao {
-    @Query("SELECT * FROM prompts")
-    fun getAllPrompts(): LiveData<List<Prompt>>
 
     @Query("SELECT * FROM prompts where id=(:id)")
     fun getPrompt(id: Int): Prompt?
 
     @Transaction
-    @Query("SELECT * FROM prompts where is_active = 1")
+    @Query("SELECT * FROM prompts")
     fun getAllPromptAndNotification(): Flow<List<PromptAndNotification>>
 
     @Transaction
