@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.galia.evilfriend.databinding.FragmentPromptBinding
 import com.galia.evilfriend.di.PromptFragmentComponent
 import com.galia.evilfriend.ui.viewmodels.PromptViewModel
+import com.galia.evilfriend.util.AlarmFacade
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import javax.inject.Inject
@@ -28,6 +28,7 @@ class PromptFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var alarmFacade: AlarmFacade
 
     private val viewModel by viewModels<PromptViewModel> { viewModelFactory }
 
@@ -45,6 +46,16 @@ class PromptFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        binding.promptActive.setOnCheckedChangeListener{ _, flag ->
+            if (!flag) {
+                args.promptId?.let {
+                    alarmFacade.cancel(it.toInt())
+                }
+            }
+            viewModel.setActiveLiveData(flag)
+        }
+
+
         binding.promptTime.setOnClickListener {
             val picker = MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_24H)
@@ -60,6 +71,9 @@ class PromptFragment : Fragment() {
         }
 
         viewModel.promptSaved.observe(viewLifecycleOwner) {
+            if (viewModel.isActive.value == true) {
+                alarmFacade.start(viewModel.promptId.value!!, viewModel.title.value!!, viewModel.hour.value!!, viewModel.minute.value!!)
+            }
             val action = PromptFragmentDirections.actionPromptFragmentToPromptListFragment()
             findNavController().navigate(action)
         }

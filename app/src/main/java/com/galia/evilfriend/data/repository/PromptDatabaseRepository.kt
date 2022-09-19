@@ -18,8 +18,8 @@ class PromptDatabaseRepository @Inject constructor(
     override suspend fun addPromptAndNotification(
         prompt: Prompt,
         notification: Notification
-    ) {
-        promptDao.addPromptAndNotification(prompt, notification, notificationDao)
+    ): Int {
+        return promptDao.addPromptAndNotification(prompt, notification, notificationDao)
     }
 
     override suspend fun updatePromptAndNotification(

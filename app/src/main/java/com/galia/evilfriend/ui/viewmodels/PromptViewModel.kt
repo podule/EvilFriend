@@ -7,7 +7,6 @@ import com.galia.evilfriend.data.model.Prompt
 import com.galia.evilfriend.data.model.PromptAndNotification
 import com.galia.evilfriend.data.repository.PromptRepository
 import com.galia.evilfriend.domain.FormatNotificationUseCase
-import com.galia.evilfriend.domain.PromptLevelUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +16,7 @@ class PromptViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _promptId = MutableLiveData<Int?>()
+    val promptId = _promptId
     val title = MutableLiveData<String>()
     val hour = MutableLiveData<Int>()
     val minute = MutableLiveData<Int>()
@@ -86,7 +86,7 @@ class PromptViewModel @Inject constructor(
             fidPrompt = prompt.id
         )
         viewModelScope.launch {
-            repository.addPromptAndNotification(prompt, notification)
+            promptId.value = repository.addPromptAndNotification(prompt, notification)
             _promptSaved.value = true
         }
     }

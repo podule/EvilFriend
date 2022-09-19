@@ -11,7 +11,7 @@ interface PromptRepository {
 
     fun getPromptAndNotification(id: Int): Flow<PromptAndNotification>
 
-    suspend fun addPromptAndNotification(prompt: Prompt, notification: Notification)
+    suspend fun addPromptAndNotification(prompt: Prompt, notification: Notification): Int
 
     suspend fun updatePromptAndNotification(prompt: Prompt, notification: Notification)
 }

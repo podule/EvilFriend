@@ -24,10 +24,12 @@ interface PromptDao {
     fun getPromptAndNotification(id: Int): Flow<PromptAndNotification>
 
     @Transaction
-    suspend fun addPromptAndNotification(prompt: Prompt, notification: Notification, daoNotificationDao: NotificationDao) {
+    suspend fun addPromptAndNotification(prompt: Prompt, notification: Notification, daoNotificationDao: NotificationDao): Int {
         val pk = insert(prompt)
         notification.fidPrompt = pk.toInt()
         daoNotificationDao.insert(notification)
+
+        return pk.toInt()
     }
 
     @Transaction

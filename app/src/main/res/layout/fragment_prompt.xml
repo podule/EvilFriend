@@ -104,7 +104,6 @@
                     android:layout_marginStart="@dimen/margin_middle"
                     android:layout_marginTop="@dimen/margin_big"
                     android:layout_marginEnd="@dimen/margin_middle"
-                    android:onCheckedChanged="@{(view, isChecked) -> viewModel.setActiveLiveData(isChecked)}"
                     android:text="@string/prompt_active"
                     app:isActive="@{viewModel.isActive}"
                     app:layout_constraintEnd_toEndOf="parent"
