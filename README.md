@@ -10,8 +10,7 @@ EvilFriend - Злой друг
 
 Скриншоты
 --------------
-<img src="prompt.jpg"/>
-<img src="prompts.jpg"/>
+<img src="prompts.jpg" width="300"/>  <img src="prompt.jpg" width="300"/>
 
 Функции и способы их реализации
 --------------
